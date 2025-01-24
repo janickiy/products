@@ -44,6 +44,6 @@ class StockInController extends Controller
             DB::insert("INSERT INTO `stock` ({$fields}) VALUES {$insertStr} ON DUPLICATE KEY UPDATE `quantity`=`quantity` + VALUES(`quantity`)");
         });
 
-        return redirect()->route('stock_in.index')->with('success', 'Приход успешно учтен!');
+        return redirect()->route('admin.stock_in.index')->with('success', 'Приход успешно учтен!');
     }
 }

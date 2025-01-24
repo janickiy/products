@@ -35,7 +35,7 @@ class ProductsController extends Controller
     {
         Products::create($request->all());
 
-        return redirect()->route('products.index')->with('success', 'Информация успешно добавлена');
+        return redirect()->route('admin.products.index')->with('success', 'Информация успешно добавлена');
     }
 
     /**
@@ -67,7 +67,7 @@ class ProductsController extends Controller
         $row->description = $request->input('description');
         $row->save();
 
-        return redirect()->route('products.index')->with('success', 'Данные обновлены');
+        return redirect()->route('admin.products.index')->with('success', 'Данные обновлены');
     }
 
     /**

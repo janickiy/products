@@ -109,7 +109,7 @@
                             {data: 'name', name: 'name'},
                             {data: 'code', name: 'code'},
                             {data: 'price', name: 'price'},
-                            {data: 'action', name: 'action', orderable: false, searchable: false}
+                            {data: 'actions', name: 'action', orderable: false, searchable: false}
                         ]
                     });
 

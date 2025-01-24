@@ -19,7 +19,7 @@ class SalesController extends Controller
     {
         $options = Products::getOption();
 
-        return view('sales.create', compact('options'))->with('title', 'Учет продаж товара');
+        return view('sale.create', compact('options'))->with('title', 'Учет продаж товара');
     }
 
     /**
@@ -40,6 +40,6 @@ class SalesController extends Controller
             $stock->save();
         });
 
-        return redirect()->route('sales.index')->with('success', 'Продажа успешно учтена!');
+        return redirect()->route('admin.sales.index')->with('success', 'Продажа успешно учтена!');
     }
 }

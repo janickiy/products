@@ -35,7 +35,7 @@ class CategoryController extends Controller
     {
         Category::create($request->all());
 
-        return redirect()->route('category.index')->with('success', 'Информация успешно добавлена');
+        return redirect()->route('admin.category.index')->with('success', 'Информация успешно добавлена');
     }
 
     /**
@@ -65,7 +65,7 @@ class CategoryController extends Controller
 
         $row->save();
 
-        return redirect()->route('category.index')->with('success', 'Данные обновлены');
+        return redirect()->route('admin.category.index')->with('success', 'Данные обновлены');
     }
 
     /**

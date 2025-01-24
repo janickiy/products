@@ -19,7 +19,7 @@
                     <header class="card card-primary">
 
                         <!-- form start -->
-                        {!! Form::open(['url' => route('admin.products.store'), 'method' => 'post']) !!}
+                        {!! Form::open(['url' => route('admin.stock_in.store'), 'method' => 'post']) !!}
 
                         <div class="card-body">
 
