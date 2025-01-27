@@ -108,6 +108,7 @@
                         },
                         'columns': [
                             {data: 'name', name: 'name'},
+                            {data: 'create_at', name: 'create_at'},
                             {data: 'quantity', name: 'quantity', searchable: false},
                         ]
                     });
