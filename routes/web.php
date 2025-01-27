@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\{
     AuthController,
+    BrandController,
     CategoryController,
     DashboardController,
     DataTableController,
@@ -38,6 +39,15 @@ Route::group(['prefix' => 'category'], function () {
     Route::post('destroy', [CategoryController::class, 'destroy'])->name('admin.category.destroy')->middleware(['permission:admin|moderator']);
 });
 
+Route::group(['prefix' => 'brand'], function () {
+    Route::get('', [BrandController::class, 'index'])->name('admin.brand.index')->middleware(['permission:admin|moderator']);
+    Route::get('create', [BrandController::class, 'create'])->name('admin.brand.create')->middleware(['permission:admin|moderator']);
+    Route::post('store', [BrandController::class, 'store'])->name('admin.brand.store')->middleware(['permission:admin|moderator']);
+    Route::get('edit/{id}', [BrandController::class, 'edit'])->name('admin.brand.edit')->where('id', '[0-9]+')->middleware(['permission:admin|moderator']);
+    Route::put('update', [BrandController::class, 'update'])->name('admin.brand.update')->middleware(['permission:admin|moderator']);
+    Route::post('destroy', [BrandController::class, 'destroy'])->name('admin.brand.destroy')->middleware(['permission:admin|moderator']);
+});
+
 Route::group(['prefix' => 'products'], function () {
     Route::get('', [ProductsController::class, 'index'])->name('admin.products.index')->middleware(['permission:admin|moderator']);
     Route::get('create', [ProductsController::class, 'create'])->name('admin.products.create')->middleware(['permission:admin|moderator']);
@@ -69,6 +79,7 @@ Route::group(['prefix' => 'users'], function () {
 
 Route::group(['prefix' => 'datatable'], function () {
     Route::any('category', [DataTableController::class, 'category'])->name('admin.datatable.category');
+    Route::any('brand', [DataTableController::class, 'brand'])->name('admin.datatable.brand');
     Route::any('products', [DataTableController::class, 'products'])->name('admin.datatable.products');
     Route::any('users', [DataTableController::class, 'users'])->name('admin.datatable.users');
     Route::any('stock', [DataTableController::class, 'stock'])->name('admin.datatable.stock');

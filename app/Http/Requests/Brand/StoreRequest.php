@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Products;
+namespace App\Http\Requests\Brand;
+
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EditRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +24,6 @@ class EditRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'code' => 'required|unique:products,code,' . $this->id,
-            'price' => 'required|numeric',
-            'category_id' => 'required|integer|exists:categories,id',
-            'brand_id' => 'required|integer|exists:brand,id',
         ];
     }
 }

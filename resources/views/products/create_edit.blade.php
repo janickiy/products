@@ -51,6 +51,17 @@
 
                             <div class="form-group">
 
+                                {!! Form::label('category_id',  'Категория*') !!}
+
+                                {!! Form::select('category_id', $options, old('category_id', $category_id ?? null), ['placeholder' => 'Категория', 'class' => 'form-control']) !!}
+
+                                @if ($errors->has('category_id'))
+                                    <p class="text-danger">{{ $errors->first('category_id') }}</p>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+
                                 {!! Form::label('description', 'Описание') !!}
 
                                 {!! Form::textarea('description', old('description', $row->description ?? null), [ 'placeholder' => 'Описание', 'rows' => 3, 'class' => 'form-control']) !!}
@@ -71,7 +82,6 @@
                                     <p class="text-danger">{{ $errors->first('price') }}</p>
                                 @endif
                             </div>
-
 
 
                         </div>

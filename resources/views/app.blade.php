@@ -125,7 +125,19 @@
                             <a href="{{ route('admin.category.index') }}" class="nav-link{{ Request::is('category*') ? ' active' : '' }}"
                                title="категории">
                                 <i class="nav-icon fas fa-list"></i>
-                                <p>категория товаров</p>
+                                <p>Категория товаров</p>
+                            </a>
+                        </li>
+
+                    @endif
+
+                    @if(PermissionsHelper::has_permission('admin|moderator'))
+
+                        <li class="nav-item">
+                            <a href="{{ route('admin.brand.index') }}" class="nav-link{{ Request::is('brand*') ? ' active' : '' }}"
+                               title="производитель">
+                                <i class="nav-icon fas fa-list"></i>
+                                <p>Производитель</p>
                             </a>
                         </li>
 
@@ -137,7 +149,7 @@
                             <a href="{{ route('admin.products.index') }}" class="nav-link{{ Request::is('products*') ? ' active' : '' }}"
                                title="товары">
                                 <i class="nav-icon fas fa-list"></i>
-                                <p>товары</p>
+                                <p>Товары</p>
                             </a>
                         </li>
 

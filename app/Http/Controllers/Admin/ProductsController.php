@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Products;
-use App\Http\Requests\Products\StoreRequest;
 use App\Http\Requests\Products\EditRequest;
+use App\Http\Requests\Products\StoreRequest;
+use App\Models\Category;
+use App\Models\Products;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 
 class ProductsController extends Controller
 {
@@ -24,7 +25,9 @@ class ProductsController extends Controller
      */
     public function create(): View
     {
-        return view('products.create_edit')->with('title', 'Добавление товара');
+        $options = Category::getOption();
+
+        return view('products.create_edit', compact('options'))->with('title', 'Добавление товара');
     }
 
     /**
@@ -48,7 +51,9 @@ class ProductsController extends Controller
 
         if (!$row) abort(404);
 
-        return view('products.create_edit', compact('row'))->with('title', 'Редактирование товара');
+        $options = Category::getOption();
+
+        return view('products.create_edit', compact('row','options'))->with('title', 'Редактирование товара');
     }
 
     /**
@@ -62,6 +67,7 @@ class ProductsController extends Controller
         if (!$row) abort(404);
 
         $row->name = $request->input('name');
+        $row->category_id = $request->input('category_id');
         $row->code = $request->input('code');
         $row->price = $request->input('price');
         $row->description = $request->input('description');
