@@ -109,7 +109,7 @@
                             {data: 'login', name: 'login'},
                             {data: 'name', name: 'name'},
                             {data: 'role', name: 'role'},
-                            {data: 'actions', name: 'action', orderable: false, searchable: false}
+                            {data: 'action', name: 'action', orderable: false, searchable: false}
                         ]
                     });
 

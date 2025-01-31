@@ -56,7 +56,10 @@ class ProductsController extends Controller
         $options = Category::getOption();
         $optionsBrand = Brand::getOption();
 
-        return view('products.create_edit', compact('row','options','optionsBrand'))->with('title', 'Редактирование товара');
+        $brand_id = $row->brand_id;
+        $category_id = $row->category_id;
+
+        return view('products.create_edit', compact('row', 'options', 'optionsBrand', 'brand_id', 'category_id'))->with('title', 'Редактирование товара');
     }
 
     /**
