@@ -39,6 +39,7 @@
                                     <thead>
                                     <tr>
                                         <th>Товар</th>
+                                        <th>Время</th>
                                         <th>Количество</th>
                                     </tr>
                                     </thead>
@@ -108,7 +109,7 @@
                         },
                         'columns': [
                             {data: 'name', name: 'name'},
-                            {data: 'create_at', name: 'create_at'},
+                            {data: 'created_at', name: 'created_at'},
                             {data: 'quantity', name: 'quantity', searchable: false},
                         ]
                     });
