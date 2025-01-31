@@ -236,8 +236,6 @@
 {!! Html::script('/plugins/sweetalert2/sweetalert2.min.js') !!}
 {!! Html::script('/plugins/toastr/toastr.min.js') !!}
 
-<!-- Cookie -->
-{!! Html::script('/plugins/cookie/jquery.cookie.js') !!}
 
 <!-- AdminLTE App -->
 {!! Html::script('/dist/js/adminlte.min.js') !!}
