@@ -16,7 +16,7 @@ class BrandController extends Controller
      */
     public function index(): View
     {
-        return view('brand.index')->with('title', 'Категория товаров');
+        return view('brand.index')->with('title', 'Производители');
     }
 
     /**
@@ -24,7 +24,7 @@ class BrandController extends Controller
      */
     public function create(): View
     {
-        return view('brand.create_edit')->with('title', 'Добавление категории');
+        return view('brand.create_edit')->with('title', 'Добавление производителя');
     }
 
     /**
@@ -62,7 +62,6 @@ class BrandController extends Controller
         if (!$row) abort(404);
 
         $row->name = $request->input('name');
-
         $row->save();
 
         return redirect()->route('admin.brand.index')->with('success', 'Данные обновлены');
@@ -74,6 +73,6 @@ class BrandController extends Controller
      */
     public function destroy(Request $request): void
     {
-        Brand::find($request->id)->delete();
+        Brand::find($request->id)->remove();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\Products\EditRequest;
 use App\Http\Requests\Products\StoreRequest;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Products;
 use Illuminate\Http\RedirectResponse;
@@ -26,8 +27,9 @@ class ProductsController extends Controller
     public function create(): View
     {
         $options = Category::getOption();
+        $optionsBrand = Brand::getOption();
 
-        return view('products.create_edit', compact('options'))->with('title', 'Добавление товара');
+        return view('products.create_edit', compact('options', 'optionsBrand'))->with('title', 'Добавление товара');
     }
 
     /**
@@ -52,8 +54,9 @@ class ProductsController extends Controller
         if (!$row) abort(404);
 
         $options = Category::getOption();
+        $optionsBrand = Brand::getOption();
 
-        return view('products.create_edit', compact('row','options'))->with('title', 'Редактирование товара');
+        return view('products.create_edit', compact('row','options','optionsBrand'))->with('title', 'Редактирование товара');
     }
 
     /**
@@ -68,6 +71,7 @@ class ProductsController extends Controller
 
         $row->name = $request->input('name');
         $row->category_id = $request->input('category_id');
+        $row->brand_id = $request->input('category_id');
         $row->code = $request->input('code');
         $row->price = $request->input('price');
         $row->description = $request->input('description');

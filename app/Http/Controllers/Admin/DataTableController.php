@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Category;
+use App\Models\Brand;
 use App\Models\Stock;
 use App\Models\User;
 use App\Models\Products;
@@ -36,9 +37,24 @@ class DataTableController extends Controller
      */
     public function products(): JsonResponse
     {
-        $row = Products::query();
+        $row = Products::query()
+            ->select(['products.*', 'category.name as category_name', 'brand.name as brand_name'])
+            ->leftJoin('category', 'products.category_id', '=', 'category.id')
+            ->leftJoin('brand', 'products.brand_id', '=', 'brand.id')
+            ->groupBy('products.id')
+            ->groupBy('products.category_id')
+            ->groupBy('products.brand_id');
 
         return Datatables::of($row)
+
+            ->editColumn('category', function ($row) {
+                return $row->category_name;
+            })
+
+            ->editColumn('brand', function ($row) {
+                return $row->brand_name;
+            })
+
             ->addColumn('actions', function ($row) {
                 $editBtn = '<a title="редактировать" class="btn btn-xs btn-primary"  href="' . URL::route('admin.products.edit', ['id' => $row->id]) . '"><span  class="fa fa-edit"></span></a> &nbsp;';
                 $deleteBtn = '<a title="удалить" class="btn btn-xs btn-danger deleteRow" id="' . $row->id . '"><span class="fa fa-trash"></span></a>';
@@ -90,5 +106,23 @@ class DataTableController extends Controller
 
         return Datatables::of($row)
             ->make(true);
+    }
+
+    /**
+     * @return JsonResponse
+     * @throws \Exception
+     */
+    public function brand(): JsonResponse
+    {
+        $row = Brand::query();
+
+        return Datatables::of($row)
+            ->addColumn('actions', function ($row) {
+                $editBtn = '<a title="редактировать" class="btn btn-xs btn-primary"  href="' . URL::route('admin.brand.edit', ['id' => $row->id]) . '"><span  class="fa fa-edit"></span></a> &nbsp;';
+                $deleteBtn = '<a title="удалить" class="btn btn-xs btn-danger deleteRow" id="' . $row->id . '"><span class="fa fa-trash"></span></a>';
+
+                return '<div class="nobr"> ' . $editBtn . $deleteBtn . '</div>';
+            })
+            ->rawColumns(['actions'])->make(true);
     }
 }

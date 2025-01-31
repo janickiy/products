@@ -38,6 +38,9 @@
                                         <th>название</th>
                                         <th>код</th>
                                         <th>цена</th>
+                                        <th>категория</th>
+                                        <th>производитель</th>
+                                        <th>дата</th>
                                         <th style="width: 10%">действия</th>
                                     </tr>
                                     </thead>
@@ -109,6 +112,9 @@
                             {data: 'name', name: 'name'},
                             {data: 'code', name: 'code'},
                             {data: 'price', name: 'price'},
+                            {data: 'category', name: 'category.name'},
+                            {data: 'brand', name: 'brand.name'},
+                            {data: 'created_at', name: 'created_at'},
                             {data: 'actions', name: 'action', orderable: false, searchable: false}
                         ]
                     });

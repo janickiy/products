@@ -74,6 +74,6 @@ class CategoryController extends Controller
      */
     public function destroy(Request $request): void
     {
-        Category::find($request->id)->delete();
+        Category::find($request->id)->remove();
     }
 }

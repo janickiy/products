@@ -25,7 +25,7 @@ class StoreRequest extends FormRequest
             'name' => 'required',
             'code' => 'required|unique:products,code',
             'price' => 'required|numeric',
-            'category_id' => 'required|integer|exists:categories,id',
+            'category_id' => 'required|integer|exists:category,id',
             'brand_id' => 'required|integer|exists:brand,id',
         ];
     }

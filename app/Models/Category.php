@@ -28,4 +28,10 @@ class Category extends Model
     {
         return self::orderBy('name')->get()->pluck('name', 'id')->toArray();
     }
+
+    public function scopeRemove(): void
+    {
+        Products::where('category_id', $this->id)->delete();
+        self::delete();
+    }
 }

@@ -62,6 +62,17 @@
 
                             <div class="form-group">
 
+                                {!! Form::label('brand_id',  'Производитель*') !!}
+
+                                {!! Form::select('brand_id', $optionsBrand, old('brand_id', $brand_id ?? null), ['placeholder' => 'Производитель', 'class' => 'form-control']) !!}
+
+                                @if ($errors->has('brand_id'))
+                                    <p class="text-danger">{{ $errors->first('brand_id') }}</p>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
+
                                 {!! Form::label('description', 'Описание') !!}
 
                                 {!! Form::textarea('description', old('description', $row->description ?? null), [ 'placeholder' => 'Описание', 'rows' => 3, 'class' => 'form-control']) !!}

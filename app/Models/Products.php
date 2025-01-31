@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-
 class Products extends Model
 {
     protected $table = 'products';
@@ -13,6 +12,7 @@ class Products extends Model
     protected $fillable = [
         'name',
         'category_id',
+        'brand_id',
         'code',
         'description',
         'price'
@@ -32,5 +32,13 @@ class Products extends Model
     public function category(): BelongsTo
     {
         return $this->belongsTo(Products::class);
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function brand(): BelongsTo
+    {
+        return $this->belongsTo(Brand::class);
     }
 }
